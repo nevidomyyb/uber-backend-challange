@@ -2,7 +2,8 @@ import os
 from flask import Flask
 from flask_smorest import Api
 
-from resources.email_sender import blp as EmailSenderBlueprint
+from resources.aws_email_sender import blp as EmailSenderAWSBlueprint
+from resources.flask_email_sender import blp as EmailSenderFlaskBlueprint
 
 def create_app():
     app = Flask(__name__, instance_path=os.getcwd())
@@ -16,8 +17,8 @@ def create_app():
     app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
 
     api = Api(app)
-
-    api.register_blueprint(EmailSenderBlueprint)
+    api.register_blueprint(EmailSenderAWSBlueprint)
+    api.register_blueprint(EmailSenderFlaskBlueprint)
 
 
     return app
