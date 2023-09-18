@@ -5,7 +5,7 @@ This repository contains the solution to a past Uber backend challenge.
 
 It involves developing an email service that abstracts between email providers and provides a way for the application to handle it if one of the services goes offline.
 
-In my solution, I implemented the AWS Simple Email Service and used the SMTPLIB library to create a local service in the Flask application. I also went beyond and developed separate endpoints for using the providers independently.
+In my solution, I implemented the AWS Simple Email Service and used the SMTPLIB library to create a local service in the Flask application. I also went beyond and developed separate endpoints for using the providers independently, theres also a log service registering which email service was used to sent a email.
 
 You can check the challenge's GitHub page at: [Uber Challenge](https://github.com/uber-archive/coding-challenge-tools/blob/master/coding_challenge.md)
 
