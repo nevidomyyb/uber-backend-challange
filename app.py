@@ -12,7 +12,7 @@ def create_app():
     app = Flask(__name__, instance_path=os.getcwd())
 
     app.config["PROPAGATION_EXCEPTIONS"] = True
-    app.config["API_TITLE"] = "Stores Rest API"
+    app.config["API_TITLE"] = "Email Service Api"
     app.config["API_VERSION"] = "v1"
     app.config["OPENAPI_VERSION"] = "3.0.3"
     app.config["OPENAPI_URL_PREFIX"] = "/"
