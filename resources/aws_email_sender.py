@@ -4,7 +4,7 @@ from flask_smorest import Blueprint, abort
 from services.aws_ses_service.ses_service import AWSSESEmailService
 from schemas.email_schema import EmailSchema
 
-blp = Blueprint("email", __name__, description='Email sender')
+blp = Blueprint("emailaws", __name__, description='Email sender')
 
 @blp.route('/api/send_mail/aws/')
 class EmailSender(MethodView):
@@ -17,7 +17,6 @@ class EmailSender(MethodView):
             subject=email_data["subject"],
             body=email_data["subject"]
         )
-        print(response)
         if response["code"] == 200:
             return jsonify({"code": 200, "message": "Email sent"})
         else:
