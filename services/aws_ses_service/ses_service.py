@@ -1,6 +1,8 @@
 import boto3
 from services.core import EmailService
 
+
+#Utilizando a interface do EmailService para implementar a funcionalidade do serviço da SES da Amazon.
 class AWSSESEmailService(EmailService):
     
     def __init__(self, region_name):
@@ -12,7 +14,7 @@ class AWSSESEmailService(EmailService):
             response = self.ses.send_email(
                 Source="idk.pedroc@gmail.com",
                 Destination={
-                    "ToAddress": [to]
+                    "ToAddresses": [to, ]
                 },
                 Message={
                     "Subject": {
@@ -27,5 +29,6 @@ class AWSSESEmailService(EmailService):
             )
             return {'message': "Email sent", 'code': 200}
         except Exception as e:
+            print(e)
             return {'message': 'Error during sending email', 'code': 500, 'error': str(e)}
         
