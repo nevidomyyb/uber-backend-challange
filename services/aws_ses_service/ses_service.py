@@ -8,6 +8,16 @@ class AWSSESEmailService(EmailService):
     def __init__(self, region_name):
         self.region_name = region_name
         self.ses = boto3.client('ses', region_name=self.region_name)
+    
+    @classmethod    
+    def check_avaliability(cls, region_name):
+        client = boto3.client('ses', region_name=region_name)
+        try:
+            response = client.get_send_quota()
+            return True
+        except Exception as e:
+            return False
+
 
     def send_email(self, to, subject, body):
         try:

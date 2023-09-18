@@ -30,6 +30,22 @@ class FlaskProvidedEmailService(EmailService):
         msg['Subject'] = subject
         return msg
 
+    @classmethod
+    def check_avaliability(cls):
+        smtp_server = os.environ.get("MAIL_SERVER")
+        smtp_username = os.environ.get("MAIL_USER")
+        smtp_port = int(os.environ.get("MAIL_PORT"))
+        smtp_password = os.environ.get("MAIL_PASSWORD")
+        try:
+            client = smtplib.SMTP(
+                smtp_server, smtp_port
+            )
+            client.starttls()
+            client.login(smtp_username, smtp_password)
+            return True
+        except Exception as e:
+            return False
+
     def send_email(self, to, subject, body):
         self.initialize_server()
         msg = self.create_msg(to, subject, body, self.smtp_username)
