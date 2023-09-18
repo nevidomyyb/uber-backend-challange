@@ -14,6 +14,9 @@ Você pode checar a página do github do desafio em: [Desafio Uber](https://gith
 3. SMTPLib
 
 A aplicação tem suporte ao Swagger UI portanto você pode acessar **.../swagger-ui** para checar a documentação da aplicação.
+
+![Print do swagger-ui da aplicação](./swagger-ui.jpg)
+
 > [!NOTE]
 > A documentação pode não estar completa visto que não configurei totalmente o swagger e também não possuo conhecimento para tal.
 
@@ -46,3 +49,22 @@ MAIL_USER=usuario_para_autenticação
 MAIL_PASSWORD=senha_para_autenticação
 ```
 9. Rodar o servidor da aplicação utilizando o comando ```flask run```
+   
+## Utilização
+Para utilizar a aplicação para enviar o e-mail você pode usar as endpoints no método POST:
+1. ```/api/send_mail/```
+Para enviar o e-mail utilizando o sistema de verificação de serviço disponível
+2. ```/api/send_mail/flask/```
+Para enviar o e-mail utilizando o serviço de SMTPLib
+3. ```/api/send_mail/aws/```
+Para enviar o e-mail utilizando o serviço da Amazon Simple Email Service
+
+### Definição do body
+Requer que o body seja um JSON
+```
+{
+  "body": "Mensagem do e-mail",
+  "subject": "Assunto do e-mail",
+  "to": "Destinatário do e-mail",
+}
+```
