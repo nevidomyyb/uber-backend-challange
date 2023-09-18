@@ -6,6 +6,8 @@ from resources.aws_email_sender import blp as EmailSenderAWSBlueprint
 from resources.router_email_sender import blp as EmailRouterBlueprint
 from resources.flask_email_sender import blp as EmailSenderFlaskBlueprint
 
+from log import createArchive, checkArchiveExistence
+
 def create_app():
     app = Flask(__name__, instance_path=os.getcwd())
 
@@ -22,5 +24,8 @@ def create_app():
     api.register_blueprint(EmailSenderFlaskBlueprint)
     api.register_blueprint(EmailRouterBlueprint)
 
+    exist = checkArchiveExistence("log.txt")
+    if not exist:
+        createArchive('log.txt')
 
     return app

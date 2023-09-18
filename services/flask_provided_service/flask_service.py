@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from flask_smorest import abort
 import os
-
+from log import registerLog
 class FlaskProvidedEmailService(EmailService):
     def __init__(self):
         self.smtp_server = os.environ.get("MAIL_SERVER")
@@ -55,6 +55,7 @@ class FlaskProvidedEmailService(EmailService):
                 to,
                 msg.as_string()
             )
+            registerLog('log.txt', 'system', 'Email sent using flask')
             return {'message': "Email sent", 'code': 200}
         except Exception as e:
             return {'message': 'Error during sending email', 'code': 500, 'error': str(e)}

@@ -1,4 +1,5 @@
 import boto3
+from log import registerLog
 from services.core import EmailService
 
 
@@ -37,6 +38,7 @@ class AWSSESEmailService(EmailService):
                     }
                 }
             )
+            registerLog('log.txt', 'system', 'Email sent using AWS-SES service')
             return {'message': "Email sent", 'code': 200}
         except Exception as e:
             print(e)
