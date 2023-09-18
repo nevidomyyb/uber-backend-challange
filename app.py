@@ -3,6 +3,7 @@ from flask import Flask
 from flask_smorest import Api
 
 from resources.aws_email_sender import blp as EmailSenderAWSBlueprint
+from resources.router_email_sender import blp as EmailRouterBlueprint
 from resources.flask_email_sender import blp as EmailSenderFlaskBlueprint
 
 def create_app():
@@ -19,6 +20,7 @@ def create_app():
     api = Api(app)
     api.register_blueprint(EmailSenderAWSBlueprint)
     api.register_blueprint(EmailSenderFlaskBlueprint)
+    api.register_blueprint(EmailRouterBlueprint)
 
 
     return app
