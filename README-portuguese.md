@@ -4,7 +4,7 @@ Esse repositório contém a solução de um antigo desafio voltado para o backen
 
 Consiste em desenvolver um serviço de e-mails que contém abstração entre os provedores de e-mail e uma forma com que a aplicação possa lidar caso um dos serviços fique offline.
 
-Na minha solução implementei o AWS Simple Email Service e utilizei a biblioteca SMTPLIB para criar um serviço local na aplicação Flask, também fui além e desenvovli além da solução propopsta pela uber fiz endpoints para utilizar os provedores separadamentes.
+Na minha solução implementei o AWS Simple Email Service e utilizei a biblioteca SMTPLIB para criar um serviço local na aplicação Flask, também fui além e desenvolvi além da solução proposta pela uber fiz endpoints para utilizar os provedores separadamentes, existe também um serviço de log registrando qual serviço de email foi utilizado para enviar um email.
 
 Você pode checar a página do github do desafio em: [Desafio Uber](https://github.com/uber-archive/coding-challenge-tools/blob/master/coding_challenge.md)
 
