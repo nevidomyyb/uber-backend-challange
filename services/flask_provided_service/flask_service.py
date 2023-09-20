@@ -19,7 +19,6 @@ class FlaskProvidedEmailService(EmailService):
             self.server.login(self.smtp_username, self.smtp_password)
             
         except Exception as e:
-            print(e)
             abort(500, message='An error occured while initializing smtp server')
     @staticmethod
     def create_msg(to, subject, body, username):
